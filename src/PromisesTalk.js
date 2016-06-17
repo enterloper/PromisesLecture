@@ -24,3 +24,26 @@ asyncMethod('Open DB Connection', function(){
     })
   })
 })
+
+//another example of callback versus promise!
+/*We need to handle errors thrown by JSON.parse but we also need to be careful not to handle errors thrown by the callback function. By the time we've done all of this our code is a mess of error handling:*/
+function readJSON(filename, callback){
+  fs.readFile(filename, 'utf8', function(err, res){
+    if(err) {return calback(err);}
+    try {
+      res = JSON.parse(res);
+    } catch (ex) {
+      return callback(ex);
+    }
+    callback(null, res);
+  });
+}
+//constructing a promise
+function readFile(filename, enc){
+  return new Promise(function (fulfill, reject){
+    fs.readFile(filename, enc, function (err, res){
+      if (err) reject(err);
+      else fulfill(res);
+    });
+  });
+}

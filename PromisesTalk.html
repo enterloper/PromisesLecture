@@ -17,7 +17,17 @@
   </div>
   <div>
     <h2>Constructing a promise</h2>
+    <p>Once all of the APIs return promises, it should be relatively rare that you need to construct one by hand. In the meantime, we need a way to polyfill existing APIs.</p>
+    <p>We use <span style= "color:tomato; background: #ffe5e1; padding: 2px; border-radius: 5px;">new Promise</span> to construct the promise. We give the constructor a factory function which does the actual work. This function is called immediately with two arguments. The first argument fulfills the promise and the second argument rejects the promise. Once the operation has completed, we call the appropriate function.</p>
   </div>
-<script type="text/javascript" src="src/PromisesTalk.js"></script>
+  <div>
+    <h2>jQuery</h2>
+    <p>This feels like a good time to warn you that what jQuery calls a promise is in fact totally different to what everyone else calls a promise. jQuery's promises have a poorly thought out API that will likely just confuse you. Fortunately, instead of using jQuery's strange version of a promise, you can just convert it to a really simple standardised promise:</p>
+    <code>var jQueryPromise = $.ajax('/data.json'); </br>
+          var realPromise = Promise.resolve(jQUeryPromoise</code>
+  </div>
+  </br>
+  <script type="text/javascript" src="src/PromisesTalk.js"></script>
+  <footer>&copy Richard Boothe</footer>
 </body>
 </html>
