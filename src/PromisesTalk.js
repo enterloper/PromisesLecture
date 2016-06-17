@@ -25,6 +25,7 @@ asyncMethod('Open DB Connection', function(){
   })
 })
 
+//A PROMISE MAKES OUR FUNCTIONS THEN-ABLE
 //another example of callback versus promise!
 /*We need to handle errors thrown by JSON.parse but we also need to be careful not to handle errors thrown by the callback function. By the time we've done all of this our code is a mess of error handling:*/
 function readJSON(filename, callback){
