@@ -26,6 +26,18 @@
     <code>var jQueryPromise = $.ajax('/data.json'); </br>
           var realPromise = Promise.resolve(jQUeryPromoise</code>
   </div>
+  <div>
+    <h2>Browsers</h2>
+    <p>Promises are currently only supported by a pretty small selection of browsers, we can check compatibility here: <a target = "_blank" href="http://kangax.github.io/compat-table/es6/">kangax</a>. The good news is that they're extremely easy to polyfill: </p>
+    <code><script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script></code>
+  </div>
+  <div>
+    <h2>Node.js</h2>
+    <p>It's generally not seen as good practice to polyfill things in node.js. Instead, you're better off just requiring the library wherever you need it.</p>
+    <p>Install the <a target = "_blank" href="https://github.com/then/promise">promise library</a> via npm</p>
+    <code>var Promise = require('promise');</code>
+  </div>
+
   </br>
   <script type="text/javascript" src="src/PromisesTalk.js"></script>
   <footer>&copy Richard Boothe</footer>

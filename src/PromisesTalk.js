@@ -47,3 +47,37 @@ function readFile(filename, enc){
     });
   });
 }
+
+//awaiting a promise
+/*In order to use a promise, we must somehow be able to wait for it to be fulfilled or rejected. The way to do this is using promise.done (see warning at the end of this section if attempting to run these samples).
+With this in mind, it's easy to re-write our earlier readJSON function to use promises:*/
+
+function readJSON(filename) {
+  return new Promise(function(fullfill, reject){
+    readfile(filename, 'utf8').done(function (res){
+      try{
+        fulfill(JSON.parse(res));      
+      } catch (ex) {
+        reject(ex);
+      }
+    }, reject);
+  });
+}
+
+/*Put simply, .then is to .done as .map is to .forEach. To put that another way, use .then whenever you're going to do something with the result (even if that's just waiting for it to finish) and use .done whenever you aren't planning on doing anything with the result.
+
+Now we can re-write our original example as simply:*/
+
+function readJSON(filename) {
+  return readFile(filename, 'utf8').then(function (res){
+    return JSON.parse(res);
+  })
+}
+
+//Since JSON.parse is just a function, we could re-write this as:
+
+function readJSON(filename){
+  return readFile(filename, 'utf8').then(JSON.parse);
+}
+
+
